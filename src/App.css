@@ -270,4 +270,14 @@ footer {
   .success-title {
     font-size: 36px;
   }
+
+  .success-gif {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin: 12px 0 16px;
+    object-fit: contain;
+  }
 }
