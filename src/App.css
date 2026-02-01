@@ -1,0 +1,273 @@
+/* App.css - cleaned + mobile-friendly */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+/* ---------- Page background ---------- */
+
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(255,105,180,.25), transparent 60%),
+    radial-gradient(900px 500px at 80% 30%, rgba(186,85,211,.25), transparent 60%),
+    linear-gradient(135deg, #0b1020, #190b22 60%, #0b1020);
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* decorative glows */
+.glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(45px);
+  pointer-events: none;
+}
+
+.glow.pink {
+  background: rgba(255,105,180,.2);
+  top: -160px;
+  left: -160px;
+}
+
+.glow.purple {
+  background: rgba(186,85,211,.2);
+  bottom: -180px;
+  right: -160px;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  width: min(720px, 92vw);
+  min-height: 420px;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 20px 80px rgba(0,0,0,.55);
+  position: relative;
+}
+
+/* ---------- Header row pills ---------- */
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* badge left, built-msg right */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* shared pill look */
+.badge,
+.built-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,105,180,.2);
+  border: 1px solid rgba(255,105,180,.35);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.built-msg {
+  opacity: 0.9;
+}
+
+/* ---------- Text ---------- */
+
+.title {
+  font-size: 40px;
+  margin: 12px 0;
+  line-height: 1.05;
+}
+
+.title span {
+  background: linear-gradient(90deg, #ff66c4, #ffd1dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  opacity: .85;
+  margin: 0 0 14px;
+}
+
+.tease {
+  margin: 14px 0 18px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* ---------- Buttons ---------- */
+
+.button-area {
+  position: relative;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px; /* space between Yes and No */
+}
+
+button {
+  border: none;
+  border-radius: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.yes {
+  padding: 14px 24px;
+  font-size: 18px;
+  background: linear-gradient(90deg, #ff66c4, #ffd1dc);
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.yes:active {
+  transform: scale(0.98);
+}
+
+/* ✅ Default: NO sits next to YES */
+.no {
+  position: relative;
+  padding: 12px 20px;
+  font-size: 18px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.2);
+  cursor: not-allowed;
+  transition: transform .12s ease-out;
+  user-select: none;
+}
+
+/* ✅ When your JS sets "run", it can escape the flex layout */
+.no.run {
+  position: absolute;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  font-size: 14px;
+  opacity: .9;
+}
+
+/* ---------- Success state ---------- */
+
+.success-title {
+  font-size: 44px;
+  margin: 10px 0 10px;
+  line-height: 1.05;
+}
+
+.success-text {
+  opacity: .9;
+  margin: 0 0 10px;
+}
+
+.reset {
+  margin-top: 16px;
+  padding: 12px 18px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: white;
+}
+
+/* ---------- Mobile cleanup ---------- */
+
+@media (max-width: 480px) {
+  .page {
+    padding: 16px;
+  }
+
+  .card {
+    width: 92vw;
+    padding: 18px;
+    border-radius: 22px;
+    min-height: unset;
+  }
+
+  /* stack pills so they don't squeeze */
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .badge,
+  .built-msg {
+    max-width: 100%;
+    white-space: normal;  /* allow wrapping on mobile */
+    padding: 7px 10px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1.08;
+    margin: 10px 0;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .tease {
+    margin: 12px 0 16px;
+    font-size: 14px;
+  }
+
+  .button-area {
+    height: 140px;
+    gap: 14px;
+  }
+
+  .yes {
+    padding: 13px 18px;
+    font-size: 16px;
+  }
+
+  .no {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  footer {
+    font-size: 13px;
+  }
+
+  .success-title {
+    font-size: 36px;
+  }
+}
